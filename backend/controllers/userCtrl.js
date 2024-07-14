@@ -56,7 +56,7 @@ const loginUserCtrl = async (req, res) => {
             return res.status(400).json({
                 message: 'Invalid password'
             })
-        }
+        } 
         const token = generateTokenAndCookie(user._id, res);
 
         res.status(200).json({
@@ -66,6 +66,7 @@ const loginUserCtrl = async (req, res) => {
             username: user.username,
             bio: user.bio,
             profilePic: user.profilePic,
+            token, 
         })
     } catch (error) {
         res.status(500).json({ error: error.message })

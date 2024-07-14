@@ -8,6 +8,7 @@ import { RxAvatar } from 'react-icons/rx'
 import { FiLogOut } from "react-icons/fi";
 import useLogout from '../hooks/useLogout'
 import authScreenAtom from '../atoms/authAtom'
+import { BsChatDotsFill } from "react-icons/bs";
 
 function Header() {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -22,9 +23,9 @@ function Header() {
         </Link>
       )}
       {!user && (
-       <Link as={RouterLink} to={"/auth"} onClick={() => setAuthScreen("login")}>
-       Login
-     </Link>
+        <Link as={RouterLink} to={"/auth"} onClick={() => setAuthScreen("login")}>
+          Login
+        </Link>
       )}
       <Image
         cursor={"pointer"}
@@ -38,6 +39,9 @@ function Header() {
           <Link as={RouterLink} to={`/${user.username}`}>
             <RxAvatar size={24} />
           </Link>
+          <Link as={RouterLink} to={`/chat`}>
+            <BsChatDotsFill size={24} />
+          </Link>
           <Button size={'sm'}>
             <FiLogOut size={20} onClick={logout} />
           </Button>
@@ -46,8 +50,8 @@ function Header() {
 
       {!user && (
         <Link as={RouterLink} to={"/auth"} onClick={() => setAuthScreen("signup")}>
-        Sign up
-      </Link>
+          Sign up
+        </Link>
       )}
     </Flex>
   )
